@@ -1,5 +1,5 @@
 score = 100
 if score >= 75:
-    print("Passed")
+    print('Passed')
 else:
-    print("Failed")
+    print('Failed')
