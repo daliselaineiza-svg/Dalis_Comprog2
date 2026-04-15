@@ -1,39 +1,38 @@
 # DALIS - Week 8: FILE HANDLING ACTIVITY
 
-# Create file using "x" mode
+# Create file using file mode "x"
 try:
-    with open("message.txt", "x"):
+    with open("message.txt", "x") as file:
         print("File successfully created")
 except FileExistsError:
     print("Error: File already exists")
 
 # Menu
 while True:
-    print("\nWelcome to Messaging App")
-    print("1. Send Message")
-    print("2. View Messages")
-    print("3. Exit")
-
-#User input
+    print("\n--- Welcome to Messaging App ---\n")
+    print("1 - Send a Message")
+    print("2 - View All Messages")
+    print("3 - Exit")
+    
     choice = input("Enter choice: ")
 
     if choice == '1':
         try:
-            message = input("Enter your message: ")
+            message = input("Enter a message: ")
             if message.strip() == "":
-                print("Message cannot be empty.")
+                print("Message cannot be empty...")
             else:
                 with open("message.txt", "a") as file:
                     file.write(message + "\n")
                 print("Message sent!")
         except Exception as e:
-            print("Error in writing....", e)
+            print("Error in writing:", e)
 
     elif choice == '2':
         try:
-            with open("message.txt", "r") as file:
+            with open("message.txt", "r") as f:
                 print("\n--- Messages ---")
-                content = file.read()
+                content = f.read()
                 if content.strip() == "":
                     print("No messages")
                 else:
@@ -42,8 +41,8 @@ while True:
             print("Error in reading:", e)
 
     elif choice == '3':
-        print("Exiting program...")
+        print("Exiting....")
         break
 
     else:
-        print("Invalid input. Please try again.")
+        print("Invalid input")
